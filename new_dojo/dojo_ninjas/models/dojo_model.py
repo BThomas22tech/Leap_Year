@@ -60,30 +60,3 @@ class Dojo:
             }
             dojo.ninjas.append( Ninja( ninja_data ) )
         return dojo
-
-
-
-
-
-
-
-
-
-
-
-    # @classmethod
-    # def show_user(cls, data):
-    #     query = "SELECT * FROM users WHERE id = %(id)s";
-    #     results = connectToMySQL('user_cr').query_db(query,data)
-    #     return  cls(results[0])
-    
-    # @classmethod
-    # def edit_user(cls, data):
-    #     query = "UPDATE users SET first_name=%(first_name)s,last_name=%(last_name)s,email=%(email)s,updated_at=NOW() WHERE id = %(id)s";
-    #     return connectToMySQL('user_cr').query_db(query,data)
-    # @classmethod
-    # def delete_user(cls, data):
-    #     query = "DELETE FROM users WHERE id = %(id)s";
-    #     return connectToMySQL('user_cr').query_db(query,data)
-        
-

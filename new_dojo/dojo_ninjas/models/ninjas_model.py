@@ -15,9 +15,9 @@ class Ninja:
     def show_ninjas(cls,data):
         query = "select * from ninjas left join dojos on ninjas.dojo_id = dojos.id where dojos.id = %(id)s "
         results = connectToMySQL('ninja_dojo').query_db(query,data)
-        # Create an empty list to append our instances of friends
+    
         ninjas = []
-        # Iterate over the db results and create instances of friends with cls.
+    
         for ninja in results:
             ninjas.append( cls(ninja) )
         return ninjas
@@ -41,12 +41,7 @@ class Ninja:
     @classmethod
     def get_one_ninja(cls,data):
         query = "SELECT * FROM ninjas WHERE ninjas.id = %(id)s;"
-        # query = "SELECT * FROM dojos LEFT JOIN ninjas ON dojo_id = dojos.id WHERE dojos.id = %(id)s;"
         results = connectToMySQL('ninja_dojo').query_db(query,{'id': data})
-        print(results)
         ninja = cls( results[0] )
-        print("****")
         ninja.dojo = results[0]["dojo_id"]
-        # for dojo in results:
-        
         return ninja

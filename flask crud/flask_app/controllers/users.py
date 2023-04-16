@@ -1,5 +1,5 @@
 from flask_app import app
-from flask import render_template,redirect,request
+from flask import render_template,redirect,request,flash
 from flask_app.models.user import Users
 
 
@@ -45,6 +45,10 @@ def delete_user(id):
 
 @app.route('/add_user', methods = ["POST"])
 def add_users():
+    if not Users.validate_user(request.form):
+        return redirect('/new_user',)
+    
+    email_data ={"email": request.form["email"]}
     data = {
         "first_name": request.form['first_name'],
         "last_name": request.form["last_name"],
